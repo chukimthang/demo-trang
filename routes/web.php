@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('index',[
+Route::get('/',[
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
 ]);
@@ -117,4 +113,8 @@ Route::group(['prefix' => 'admin'], function(){
 
 		Route::get('delete/{id}','ProductTypeController@getDelete');
 	});
+});
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
+	Route::resource('news', 'NewsController');
 });

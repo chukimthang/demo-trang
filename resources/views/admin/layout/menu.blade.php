@@ -13,10 +13,10 @@
                     <!-- /input-group -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    <a href="#"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Loại sản phẩm<span class="fa arrow"></span></a>
+                    <a href="#"></i>Loại sản phẩm<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="admin/type_product/list">Danh sách loại sản phẩm</a>
@@ -28,7 +28,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-cube fa-fw"></i> Sản phẩm<span class="fa arrow"></span></a>
+                    <a href="#"></i> Sản phẩm<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="admin/product/list">Danh sách sản phẩm</a>
@@ -40,13 +40,26 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
+                    <a href="#">User<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="#">Danh sách user</a>
                         </li>
                         <li>
                             <a href="#">Thêm user</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+
+                <li>
+                    <a href="{{ route('news.index') }}">Tin tức<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ route('news.index') }}">Danh sách tin tức</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('news.create') }}">Thêm tin tức</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
