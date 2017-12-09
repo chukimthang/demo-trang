@@ -51,7 +51,7 @@ class NewsController extends Controller
 
         return redirect()->route('admin.news.index')->with([
             'flash_level' => 'success',
-            'flash_message' => 'Thêm tin tức thành công'
+            'flash_message' => 'Thêm bài viết thành công'
         ]);
     }
 
@@ -67,7 +67,7 @@ class NewsController extends Controller
         if (!$news) {
             return redirect()->route('news.index')->with([
                 'flash_level' => 'danger',
-                'flash_message' => 'Không tìm thấy tin tức'
+                'flash_message' => 'Không tìm thấy bài viết'
             ]);
         }
     
@@ -87,7 +87,7 @@ class NewsController extends Controller
         if (!$news) {
             return redirect()->route('news.index')->with([
                 'flash_level' => 'danger',
-                'flash_message' => 'Không tìm thấy tin tức'
+                'flash_message' => 'Không tìm thấy bài viết'
             ]);
         }
 
@@ -117,7 +117,7 @@ class NewsController extends Controller
 
         return redirect()->route('admin.news.index')->with([
             'flash_level' => 'success',
-            'flash_message' => 'Sửa tin tức thành công'
+            'flash_message' => 'Sửa bài viết thành công'
         ]);
     }
 
@@ -129,6 +129,27 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $news = News::find($id);
+
+        if (!$news) {
+            return redirect()->route('admin.news.index')->with([
+                'flash_level' => 'danger',
+                'flash_message' => 'Xóa thành công'
+            ]);
+        }
+
+        $name_image = $news->image;
+        $destinationPath = public_path("upload/images/$name_image");
+
+        if(file_exists($destinationPath)){
+            @unlink($destinationPath);
+        }
+        
+        $news->delete();
+        
+        return redirect()->route('admin.news.index')->with([
+            'flash_level' => 'success',
+            'flash_message' => 'Xóa bài viết thành công'
+        ]);
     }
 }

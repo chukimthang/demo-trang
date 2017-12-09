@@ -121,4 +121,6 @@ Route::resource('news', 'NewsController', ['only' => ['index', 'show']]);
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], function(){
 	Route::resource('news', 'NewsController');
+
+	Route::resource('users', 'UsersController');
 });
