@@ -49,7 +49,7 @@ class NewsController extends Controller
         
         News::create($data);
 
-        return redirect()->route('news.index')->with([
+        return redirect()->route('admin.news.index')->with([
             'flash_level' => 'success',
             'flash_message' => 'Thêm tin tức thành công'
         ]);
@@ -115,7 +115,7 @@ class NewsController extends Controller
 
         $news->update($data);
 
-        return redirect()->route('news.index')->with([
+        return redirect()->route('admin.news.index')->with([
             'flash_level' => 'success',
             'flash_message' => 'Sửa tin tức thành công'
         ]);
