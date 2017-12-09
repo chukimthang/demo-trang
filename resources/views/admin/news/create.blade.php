@@ -9,9 +9,9 @@
             </div>
 
             <div class="col-lg-7">
-                @include("admin.shared.error_message")
+                @include("shared.error_message")
 
-                {!! Form::open(["route" => "news.store", "files" => true]) !!}
+                {!! Form::open(["route" => "admin.news.store", "files" => true]) !!}
                     <div class="form-group">
                         {!! Form::label("title", "Tiêu đề") !!}
                         {!! Form::text("title", null, ["class" => "form-control", "placeholder" =>  "Tiêu đề"]) !!}
@@ -29,7 +29,7 @@
                     
                     <div class="form-group">
                         {!! Form::submit("Create", ["class" => "btn btn-primary"]) !!}
-                        <a href="{!! route("news.index") !!}" class="btn btn-default">Back</a>
+                        <a href="{!! route("admin.news.index") !!}" class="btn btn-default">Back</a>
                     </div>
                 {!! Form::close() !!}
             </div>

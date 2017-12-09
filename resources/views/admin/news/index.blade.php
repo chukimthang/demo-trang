@@ -13,7 +13,7 @@
             <div class="clear:both"></div>
             
             <div class="col-lg-12">
-                @include('admin.shared.flash_message')
+                @include('shared.flash_message')
             </div>
             
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -36,11 +36,11 @@
                         <td align="left">{!! Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->format('d/m/Y') !!}</td>
                         <td>
                             <div style="float: left;">
-                                <a href="{!! route('news.edit', $item->id) !!}" 
+                                <a href="{!! route('admin.news.edit', $item->id) !!}" 
                                     class="btn btn-success btn-xs">Edit</a> 
                             </div>
                             <div>
-                                {!! Form::open(['method' => 'DELETE', 'route' => ['news.destroy',
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['admin.news.destroy',
                                     $item->id] ]) !!}
                                 {!! Form::submit("Delete", ['class' => 'btn btn-danger btn-xs']) !!}
                             {!! Form::close() !!}

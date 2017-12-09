@@ -89,7 +89,7 @@
 								@endforeach
 							</ul>
 						</li>
-						<li><a href="#">Tin tức</a></li>
+						<li><a href="{!! route('news.index') !!}">Tin tức</a></li>
 						<li><a href="{{route('lienhe')}}">Liên hệ</a></li>
 					</ul>
 					<div class="clearfix"></div>
@@ -97,3 +97,4 @@
 			</div> <!-- .container -->
 		</div> <!-- .header-bottom -->
 	</div> <!-- #header -->
+	

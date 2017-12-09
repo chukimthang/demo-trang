@@ -9,10 +9,10 @@
             </div>
 
             <div class="col-lg-7">
-                @include("admin.shared.error_message")
+                @include("shared.error_message")
 
                  {!! Form::model($news, ['method' => 'PUT', "files" => true, 
-                    'route' => ['news.update', $news->id]]) !!}
+                    'route' => ['admin.news.update', $news->id]]) !!}
                     <div class="form-group">
                         {!! Form::label("title", "Tiêu đề") !!}
                         {!! Form::text("title", null, ["class" => "form-control", 
@@ -31,7 +31,7 @@
                     
                     <div class="form-group">
                         {!! Form::submit("Update", ["class" => "btn btn-primary"]) !!}
-                        <a href="{!! route("news.index") !!}" class="btn btn-default">Back</a>
+                        <a href="{!! route("admin.news.index") !!}" class="btn btn-default">Back</a>
                     </div>
                 {!! Form::close() !!}
             </div>

@@ -84,6 +84,8 @@ Route::get('search',[
 	'uses'=>'PageController@getSearch'
 ]);
 
+
+
 Route::group(['prefix' => 'admin'], function(){
 
 	// product
@@ -115,6 +117,8 @@ Route::group(['prefix' => 'admin'], function(){
 	});
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
+Route::resource('news', 'NewsController', ['only' => ['index', 'show']]);
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], function(){
 	Route::resource('news', 'NewsController');
 });
