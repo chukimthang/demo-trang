@@ -16,6 +16,7 @@
     <link href="admin_asset/dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="admin_asset/bower_components/font-awesome/css/font-awesome.min.css" 
         rel="stylesheet" type="text/css">
+    <script src="admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,6 @@
         @yield('content')
     </div>
     
-    <script src="admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="admin_asset/bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script src="admin_asset/dist/js/sb-admin-2.js"></script>

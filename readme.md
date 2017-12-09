@@ -15,3 +15,10 @@
 }
 - Run comman: bower update
 
+## Create file
+- Controller: php artisan make:controller Admin/NewsController --resource
+- Request: php artisan make:request NewsAddRequest
+
+## Install Carbon
+- composer require nesbot/carbon
+- Link: https://github.com/briannesbitt/Carbon
