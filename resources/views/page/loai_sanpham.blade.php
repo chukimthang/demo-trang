@@ -32,7 +32,7 @@
 						@foreach($sp_theoloai as $sp)
 							<div class="col-sm-4">
 								<div class="single-item">
-									@if($sp->promotion_price!=0)
+									@if($sp->discount!=0)
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 									<div class="single-item-header">
@@ -41,9 +41,9 @@
 									<div class="single-item-body">
 										<p class="single-item-title">{{$sp->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-										@if($sp->promotion_price !=0)
+										@if($sp->discount !=0)
 											<span class="flash-del">{{number_format($sp->unit_price)}} đồng</span>
-												<span class="flash-sale">{{number_format($sp->promotion_price)}} đồng</span>
+												<span class="flash-sale">{{number_format($sp->discount)}} đồng</span>
 										@else
 										<span>{{number_format($sp->unit_price)}} đồng</span>
 										@endif
@@ -72,7 +72,7 @@
 						@foreach($sp_khac as $sp_k)
 							<div class="col-sm-4">
 								<div class="single-item">
-									@if($sp_k->promotion_price!=0)
+									@if($sp_k->discount!=0)
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 									<div class="single-item-header">
@@ -81,9 +81,9 @@
 									<div class="single-item-body">
 										<p class="single-item-title">{{$sp_k->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-										@if($sp_k->promotion_price !=0)
+										@if($sp_k->discount !=0)
 											<span class="flash-del">{{number_format($sp_k->unit_price)}} đồng</span>
-												<span class="flash-sale">{{number_format($sp_k->promotion_price)}} đồng</span>
+												<span class="flash-sale">{{number_format($sp_k->discount)}} đồng</span>
 										@else
 										<span>{{number_format($sp_k->unit_price)}} đồng</span>
 										@endif
