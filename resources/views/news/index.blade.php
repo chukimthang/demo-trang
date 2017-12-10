@@ -23,10 +23,16 @@
                                 <div class="col-sm-4">
                                     <div class="single-item">
                                         <div class="single-item-header">
-                                            <a href="#"><img src="upload/images/{{ $item->image }}" alt="" height="250px"></a>
+                                            <a href="{{route('chitietsanpham', $item->id)}}">
+                                                @if (strpos($item->image, 'https://lorempixel.com', 0) == false)
+                                                    <img src="{!! $item->image !!}" alt="" height="250px">
+                                                @else
+                                                    <img src="upload/images/{!! $item->image !!}" alt="" height="250px">
+                                                @endif
+                                            </a>
                                         </div>
                                         <div class="single-item-body">
-                                            <p class="single-item-title">{{ $item->title }}</p>
+                                            <p class="single-item-title">{!! $item->title !!}</p>
                                         </div>
                                         <div class="single-item-caption">
                                             <a class="beta-btn primary" href="{{route('news.show', $item->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>

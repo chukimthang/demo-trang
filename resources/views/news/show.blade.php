@@ -17,7 +17,11 @@
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="upload/images/{{ $news->image }}" alt="">
+                            @if (strpos($news->image, 'https://lorempixel.com', 0) == false)
+                                <img src="{!! $news->image !!}" alt="" height="250px">
+                            @else
+                                <img src="upload/images/{!! $news->image !!}" alt="" height="250px">
+                            @endif
                         </div>
                         <div class="col-sm-8">
                             <div class="single-item-body">
@@ -27,6 +31,10 @@
                             <div class="clearfix"></div>
                             <div class="space20">&nbsp;</div>
 
+                            <div class="single-item-desc">
+                                <p>{!! $news->description !!}</p>
+                            </div>
+                            <br>
                             <div class="single-item-desc">
                                 <p>{!! $news->content !!}</p>
                             </div>

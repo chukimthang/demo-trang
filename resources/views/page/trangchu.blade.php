@@ -92,10 +92,11 @@
 										<div class="single-item-header">
 											<a href="{{route('chitietsanpham',$spkm->id)}}">
 												@if (strpos($new->image, 'https://lorempixel.com', 0) == false)
-													<img src="{{$spkm->image }}" alt="" height="250px"></a>
+													<img src="{{$spkm->image }}" alt="" height="250px">
 												@else
-													<img src="source/image/product/{{$spkm->image }}" alt="" height="250px"></a>
+													<img src="source/image/product/{{$spkm->image }}" alt="" height="250px">
 												@endif
+											</a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$spkm->name}}</p>
