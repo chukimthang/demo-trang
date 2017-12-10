@@ -21,17 +21,21 @@
 
 					<div class="row">
 						<div class="col-sm-4">
-							<img src="source/image/product/{{$sanpham->image}}" alt="">
+							@if (strpos($sanpham->image, 'https://lorempixel.com', 0) == false)
+								<img src="{!! $sanpham->image !!}" alt="" height="250px">
+							@else
+								<img src="source/image/product/{{$sanpham->image}}" alt="" height="250px">
+							@endif
 						</div>
 						<div class="col-sm-8">
 							<div class="single-item-body">
 								<p class="single-item-title"><h2>{{$sanpham->name}}</h2></p>
 								<p class="single-item-price">
-									@if($sanpham->promotion_price==0)
+									@if($sanpham->discount==0)
 										<span class="flash-sale">{{number_format($sanpham->unit_price)}} đồng</span>
 									@else
 										<span class="flash-del">{{number_format($sanpham->unit_price)}} đồng</span>
-										<span class="flash-sale">{{number_format($sanpham->promotion_price)}} đồng</span>
+										<span class="flash-sale">{{number_format($sanpham->unit_price - $sanpham->unit_price * $sanpham->discount/100)}} đồng</span>
 									@endif
 								</p>
 							</div>
@@ -84,20 +88,26 @@
 						@foreach($sp_tuongtu as $sptt)
 							<div class="col-sm-4">
 								<div class="single-item">
-									@if($sptt->promotion_price!=0)
+									@if($sptt->discount!=0)
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 									<div class="single-item-header">
-										<a href="product.html"><img src="source/image/product/{{$sptt->image}}" alt="" height="150px"></a>
+										<a class="pull-left" href="{{route('chitietsanpham',$sptt->id)}}">
+										@if (strpos($sptt->image, 'https://lorempixel.com', 0) == false)
+											<img src="{!! $sptt->image !!}" alt="" height="250px">
+										@else
+											<img src="source/image/product/{{$sptt->image}}" alt="" height="250px">
+										@endif
+										</a>
 									</div>
 									<div class="single-item-body">
 										<p class="single-item-title">{{$sptt->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-											@if($sptt->promotion_price==0)
-												<span class="flash-sale">{{number_format($sptt->unit_price)}} đồng</span>
+											@if($sptt->discount==0)
+												<span class="flash-sale">{{number_format($sanpham->unit_price)}} đồng</span>
 											@else
-												<span class="flash-del">{{number_format($sptt->unit_price)}} đồng</span>
-												<span class="flash-sale">{{number_format($sptt->promotion_price)}} đồng</span>
+												<span class="flash-del">{{number_format($sanpham->unit_price)}} đồng</span>
+												<span class="flash-sale">{{number_format($sptt->unit_price - $sptt->unit_price * $sptt->discount/100)}} đồng</span>
 											@endif
 										</p>
 									</div>
@@ -110,60 +120,31 @@
 							</div>
 						@endforeach
 						</div>
-						<div class="row">{{$sp_tuongtu->links()}}</div>
+						{{-- <div class="row">{{$sp_tuongtu->links()}}</div> --}}
 					</div> <!-- .beta-products-list -->
 				</div>
 				<div class="col-sm-3 aside">
 					<div class="widget">
-						<h3 class="widget-title">Sản phẩm bán chạy</h3>
-						<div class="widget-body">
-							<div class="beta-sales beta-lists">
-								<div class="media beta-sales-item">
-									<a class="pull-left" href="product.html"><img src="source/assets/dest/images/ban_chay/bot-chum-ngay.jpg" alt=""></a>
-									<div class="media-body">
-										Bột chùm ngây
-										<span class="beta-sales-price">120,000 đồng</span>
-									</div>
-								</div>
-								<div class="media beta-sales-item">
-									<a class="pull-left" href="product.html"><img src="source/assets/dest/images/ban_chay/bot-chum-ngay.jpg" alt=""></a>
-									<div class="media-body">
-										Bột chùm ngây
-										<span class="beta-sales-price">120,000 đồng</span>
-									</div>
-								</div>
-								<div class="media beta-sales-item">
-									<a class="pull-left" href="product.html"><img src="source/assets/dest/images/ban_chay/bot-chum-ngay.jpg" alt=""></a>
-									<div class="media-body">
-										Bột chùm ngây
-										<span class="beta-sales-price">120,000 đồng</span>
-									</div>
-								</div>
-								<div class="media beta-sales-item">
-									<a class="pull-left" href="product.html"><img src="source/assets/dest/images/ban_chay/bot-chum-ngay.jpg" alt=""></a>
-									<div class="media-body">
-										Bột chùm ngây
-										<span class="beta-sales-price">120,000 đồng</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div> <!-- best sellers widget -->
-					<div class="widget">
 						<h3 class="widget-title">Sản phẩm mới</h3>
 						<div class="widget-body">
 							<div class="beta-sales beta-lists">
-								@foreach($sp_tuongtu as $new)
+								@foreach($new_product as $new_product_item) 
 								<div class="media beta-sales-item">
-									<a class="pull-left" href="{{route('chitietsanpham',$new->id)}}"><img src="source/image/product/{{$new->image}}" alt=""></a>
+									<a class="pull-left" href="{{route('chitietsanpham',$new_product_item->id)}}">
+										@if (strpos($new_product_item->image, 'https://lorempixel.com', 0) == false)
+											<img src="{!! $new_product_item->image !!}" alt="" height="250px">
+										@else
+											<img src="source/image/product/{{$new_product_item->image}}" alt="" height="250px">
+										@endif
+									</a>
 									<div class="media-body">
-										{{$new->name}}
-										@if($new->promotion_price==0)
-												<span class="flash-sale">{{number_format($new->unit_price)}} đồng</span>
-											@else
-												<span class="flash-del">{{number_format($new->unit_price)}} đồng</span>
-												<span class="flash-sale">{{number_format($new->promotion_price)}} đồng</span>
-											@endif
+										{{$new_product_item->name}}
+										@if($new_product_item->discount==0)
+											<span class="flash-sale">{{number_format($new_product_item->unit_price)}} đồng</span>
+										@else
+											<span class="flash-del">{{number_format($new_product_item->unit_price)}} đồng</span>
+											<span class="flash-sale">{{number_format($new_product_item->unit_price - $new_product_item->unit_price * $new_product_item->discount/100)}} đồng</span>
+										@endif
 									</div>
 								</div>
 								@endforeach

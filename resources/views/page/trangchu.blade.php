@@ -23,7 +23,6 @@
 	</div>
 </div>
 <!--slider-->
-</div>
 <div class="container">
 		<div id="content" class="space-top-none">
 			<div class="main-content">
@@ -33,7 +32,7 @@
 						<div class="beta-products-list">
 							<h4>Sản phẩm mới</h4>
 							<div class="beta-products-details">
-								<p class="pull-left">Tìm thấy {{count($new_product)}} sản phẩm</p>
+								<p class="pull-left">Tìm thấy {{ $count_product_new }} sản phẩm</p>
 								<div class="clearfix"></div>
 							</div>
 
@@ -41,20 +40,26 @@
 							@foreach($new_product as $new)
 								<div class="col-sm-3">
 									<div class="single-item">
-									@if($new->promotion_price!=0)
+									@if($new->discount!=0)
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 										<div class="single-item-header">
-											<a href="{{route('chitietsanpham',$new->id)}}"><img src="source/image/product/{{$new->image}}" alt="" height="250px"></a>
+											<a href="{{route('chitietsanpham',$new->id)}}">
+												@if (strpos($new->image, 'https://lorempixel.com', 0) == false)
+													<img src="{!! $new->image !!}" alt="" height="250px"></a>
+												@else
+													<img src="source/image/product/{{$new->image}}" alt="" height="250px"></a>
+												@endif
+											
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$new->name}}</p>
 											<p class="single-item-price" style="font-size: 18px">
-											@if($new->promotion_price==0)
+											@if($new->discount==0)
 												<span class="flash-sale">{{number_format($new->unit_price)}} đồng</span>
 											@else
 												<span class="flash-del">{{number_format($new->unit_price)}} đồng</span>
-												<span class="flash-sale">{{number_format($new->promotion_price)}} đồng</span>
+												<span class="flash-sale">{{number_format($new->unit_price - $new->unit_price * $new->discount/100)}} đồng</span>
 											@endif
 											</p>
 										</div>
@@ -77,7 +82,7 @@
 						<div class="beta-products-list">
 							<h4>Sản phẩm khuyến mãi</h4>
 							<div class="beta-products-details">
-								<p class="pull-left">Tìm thấy {{count($sanpham_khuyenmai)}} sản phẩm</p>
+								<p class="pull-left">Tìm thấy {{ $count_sanpham_khuyenmai }} sản phẩm</p>
 								<div class="clearfix"></div>
 							</div>
 							<div class="row">
@@ -85,18 +90,23 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="{{route('chitietsanpham',$spkm->id)}}"><img src="source/image/product/{{$spkm->image}}" alt="" height="250px"></a>
+											<a href="{{route('chitietsanpham',$spkm->id)}}">
+												@if (strpos($new->image, 'https://lorempixel.com', 0) == false)
+													<img src="{{$spkm->image }}" alt="" height="250px"></a>
+												@else
+													<img src="source/image/product/{{$spkm->image }}" alt="" height="250px"></a>
+												@endif
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$spkm->name}}</p>
 											<p class="single-item-price"  style="font-size: 18px">
-												<span class="flash-del">{{number_format($spkm->unit_price)}} đồng</span>
-												<span class="flash-sale">{{number_format($spkm->promotion_price)}} đồng</span>
+												<span class="flash-del">{{number_format($new->unit_price)}} đồng</span>
+												<span class="flash-sale">{{number_format($new->unit_price - $new->unit_price * $new->discount/100)}} đồng</span>
 											</p>
 										</div>
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="{{route('themgiohang',$new->id)}}"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="{{route('chitietsanpham',$new->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
+											<a class="add-to-cart pull-left" href="{{route('themgiohang',$spkm->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											<a class="beta-btn primary" href="{{route('chitietsanpham',$spkm->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>

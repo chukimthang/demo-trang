@@ -24,14 +24,14 @@ class ProductController extends Controller
                 'id_type'=>'required',
                 'unit_price'=>'required',
                 'image'=>'required',
-                'new'=>'required',
+                'status'=>'required',
             ],
             [
                 'name.required'=>'Vui lòng nhập tên sản phẩm.',
                 'id_type.required'=>'Vui lòng nhập loại sản phẩm.',
                 'unit_price.required'=>'Vui lòng nhập giá sản phẩm.',
                 'image.required'=>'Vui lòng chọn ảnh của sản phẩm.',
-                'new.required'=>'Bạn chưa nhập trạng thái sản phẩm. Vui lòng nhập 1 nếu là sản phẩm mới hoặc 0 là sản phẩm cũ.',
+                'status.required'=>'Bạn chưa nhập trạng thái sản phẩm. Vui lòng nhập 1 nếu là sản phẩm mới hoặc 0 là sản phẩm cũ.',
                 'name.unique' => 'Tên sản phẩm đã tồn tại.',
                 'name.min'=>'Tên sản phẩm chứa ít nhất 2 kí tự.',
                 'name.max'=>'Tên sản phẩm không quá 100 kí tự.'
@@ -46,7 +46,7 @@ class ProductController extends Controller
         $product->promotion_price = $req->promotion_price;
         $product->image = $req->image;
         $product->unit = $req->unit;
-        $product->new = $req->new;
+        $product->status = $req->status;
         $product->created_at = $req->created_at;
 
         $product->save();

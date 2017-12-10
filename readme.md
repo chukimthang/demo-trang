@@ -18,7 +18,13 @@
 ## Create file
 - Controller: php artisan make:controller Admin/NewsController --resource
 - Request: php artisan make:request NewsAddRequest
+- Migrate: php artisan make:migration create_comments_table --create=comments
+- Seeder: php artisan make:seed UsersTableSeeder
 
 ## Install Carbon
 - composer require nesbot/carbon
 - Link: https://github.com/briannesbitt/Carbon
+
+## Install library faker
+- Faker: composer require fzaninotto/faker
+- Link: https://github.com/fzaninotto/Faker
