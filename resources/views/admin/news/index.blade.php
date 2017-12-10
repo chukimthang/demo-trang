@@ -31,9 +31,20 @@
                     <tr class="odd gradeX" align="center">
                         <td>{!! $key + 1 !!}</td>
                         <td align="left">{!! $item->title !!}</td>
-                        <td><img src="upload/images/{!! $item->image !!}" alt="" 
-                            width="50px" height="50px"></td>
-                        <td align="left">{!! Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->format('d/m/Y') !!}</td>
+                        <td>
+                            @if (strpos($item->image, 'https://lorempixel.com', 0) == false)
+                                <img src="{!! $item->image !!}" alt="" height="50px">
+                            @else
+                                <img src="upload/images/{!! $item->image !!}" alt="" height="50px">
+                            @endif
+                        </td>
+                        <td align="left">
+                            @if ($item->created_at != null)
+                                {!! Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->created_at)->format('d/m/Y') !!}
+                            @else
+                                {!! "" !!}
+                            @endif
+                        </td>
                         <td>
                             <div style="float: left;">
                                 <a href="{!! route('admin.news.edit', $item->id) !!}" 

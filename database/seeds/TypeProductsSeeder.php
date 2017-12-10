@@ -26,7 +26,7 @@ class TypeProductsSeeder extends Seeder
         for($i = 0; $i < count($type_products); $i++) {
             DB::table('type_products')->insert([
                 'name' => $type_products[$i],
-                'description' => $faker->paragraph($nbSentences = 50, $variableNbSentences = true)
+                'description' => $faker->paragraph($nbSentences = 2, $variableNbSentences = true)
             ]);
         }
     }

@@ -11,9 +11,21 @@
 					<ul class="top-details menu-beta l-inline">
 					@if(Auth::check())
 						<li><a href="">Chào bạn {{Auth::user()->full_name}}</a></li>
-						<li><a href="{{route('logout')}}">Đăng xuất</a></li>
+						 <li>
+                            <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            Đăng xuất</a>
+                        </li>
+
+                        <form id="logout-form" 
+                            action="{{ url('/logout') }}" 
+                            method="POST" 
+                            style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
 					@else
-						<li><a href="{{route('signin')}}">Đăng kí</a></li>
+						<li><a href="/register">Đăng kí</a></li>
 						<li><a href="{{route('login')}}">Đăng nhập</a></li>
 					@endif
 
