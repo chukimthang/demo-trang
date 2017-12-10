@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class NewsTableSeeder extends Seeder
 {
@@ -19,6 +20,10 @@ class NewsTableSeeder extends Seeder
                 'description' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
                 'content' => $faker->paragraph($nbSentences = 10, $variableNbSentences = true),
                 'image' => $faker->imageUrl(320, 320),
+                'created_at' => Carbon::createFromTimestamp(
+                    rand(strtotime('2017-02-14'), strtotime('2017-12-10')))
+                    ->format('Y-m-d h:i:s')
+
             ]);
         }
     }

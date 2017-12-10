@@ -28,3 +28,7 @@
 ## Install library faker
 - Faker: composer require fzaninotto/faker
 - Link: https://github.com/fzaninotto/Faker
+
+## Authentication
+- Run: php artisan make:auth
+- Link: https://laravel.com/docs/5.5/authentication

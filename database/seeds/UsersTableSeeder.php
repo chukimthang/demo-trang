@@ -22,7 +22,16 @@ class UsersTableSeeder extends Seeder
             'is_admin' => 1
         ]);
 
-         DB::table('users')->insert([
+        DB::table('users')->insert([
+            'full_name' => 'Administrator',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('123456'),
+            'phone' => '123456789',
+            'address' => 'Vinh Phuc',
+            'is_admin' => 1
+        ]);
+
+        DB::table('users')->insert([
             'full_name' => 'test1',
             'email' => 'test1@gmail.com',
             'password' => bcrypt('123456'),

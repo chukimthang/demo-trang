@@ -91,15 +91,17 @@ class NewsController extends Controller
             ]);
         }
 
-        $this->validate($request, [
-            'title' => 'required|unique:news,title,' . $news->id,
-            'content' => 'required'
-        ],
-        [
-            'title.required' => 'Tiêu đề trống',
-            'title.unique' => 'Tiêu đề trùng',
-            'content.required' => 'Nội dung trống'
-        ]);
+        $this->validate($request, 
+            [
+                'title' => 'required|unique:news,title,' . $news->id,
+                'content' => 'required'
+            ],
+            [
+                'title.required' => 'Tiêu đề trống',
+                'title.unique' => 'Tiêu đề trùng',
+                'content.required' => 'Nội dung trống'
+            ]
+        );
         
         $data = $request->only('title', 'content');
 
