@@ -82,7 +82,7 @@
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('phone'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
