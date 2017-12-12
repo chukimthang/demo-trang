@@ -10,40 +10,42 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($cart as $key => $item)
-            <tr>
-                <td>{!! $item->name !!}</td>
-                <td>
-                    <div class="column-box">
-                        <a href="#">
-                            @if (strpos($item->options->image, 'https://lorempixel.com', 0) == false)
-                                <img src="{!! $item->options->image !!}" alt="" height="50px">
-                            @else
-                                <img src="source/image/product/{{ $item->options->image}}" alt="" height="50px">
-                            @endif
-                        </a>
-                    </div>
-                </td>
-                <td>{!! number_format($item->price) !!}
-                </td>
-                <td class="cart-quantity" style="font-size: 14px;">
-                    <a class="cart-quantity-up" data-id="{{ $item->rowId }}" 
-                        data-qty="{{ $item->qty }}" href="javascript:void(0)"
-                        style="margin-left: 30%; font-size: 18px; font-weight: bold;"> + </a>
-                    <label class="cart_quantity_input" name="quantity" 
-                        value="{{ $item->qty }}" width="30px">{{ $item->qty }}</label>
-                    <a class="cart-quantity-down" data-id="{{ $item->rowId }}" href="javascript:void(0)" 
-                        style="font-size: 18px; font-weight: bold;"> - </a>
-                </td>
-                <td class="sub-total">{!! number_format($item->subtotal) !!}</td>
+        @if (isset($cart))
+            @foreach ($cart as $key => $item)
+                <tr>
+                    <td>{!! $item->name !!}</td>
+                    <td>
+                        <div class="column-box">
+                            <a href="#">
+                                @if (strpos($item->options->image, 'https://lorempixel.com', 0) == false)
+                                    <img src="{!! $item->options->image !!}" alt="" height="50px">
+                                @else
+                                    <img src="source/image/product/{{ $item->options->image}}" alt="" height="50px">
+                                @endif
+                            </a>
+                        </div>
+                    </td>
+                    <td>{!! number_format($item->price) !!}
+                    </td>
+                    <td class="cart-quantity" style="font-size: 14px;">
+                        <a class="cart-quantity-up" data-id="{{ $item->rowId }}" 
+                            data-qty="{{ $item->qty }}" href="javascript:void(0)"
+                            style="margin-left: 30%; font-size: 18px; font-weight: bold;"> + </a>
+                        <label class="cart_quantity_input" name="quantity" 
+                            value="{{ $item->qty }}" width="30px">{{ $item->qty }}</label>
+                        <a class="cart-quantity-down" data-id="{{ $item->rowId }}" href="javascript:void(0)" 
+                            style="font-size: 18px; font-weight: bold;"> - </a>
+                    </td>
+                    <td class="sub-total">{!! number_format($item->subtotal) !!}</td>
 
-                <td class="cart_delete">
-                    <a href="javascript:void(0)" class="delete" data-id="{{ $item->rowId }}">
-                        <i class="fa fa-times" style="font-size: 16px;"></i>
-                    </a>
-                </td>
-            </tr>
-        @endforeach
+                    <td class="cart_delete">
+                        <a href="javascript:void(0)" class="delete" data-id="{{ $item->rowId }}">
+                            <i class="fa fa-times" style="font-size: 16px;"></i>
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        @endif
     </tbody>
 </table>
 

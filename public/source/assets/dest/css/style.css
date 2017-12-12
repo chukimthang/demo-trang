@@ -5201,3 +5201,10 @@ border:none;}
 .beta-rotator canvas{width:100%;}
 .beta-rotator {font-family: "Open Sans",sans-serif;}
 .history-slider span {font-family: "Open Sans",sans-serif;}
+
+.form-error {
+    color: red;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+

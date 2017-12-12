@@ -17,10 +17,7 @@ class CreateReceiverInfoTable extends Migration
             $table->increments('id');
             $table->string('phone');
             $table->string('address_receive');
-            $table->text('note');
-            $table->integer('bill_id')->unsigned();
-
-            $table->foreign('bill_id')->references('id')->on('bills')->onDelete('cascade');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
