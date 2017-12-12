@@ -1,17 +1,18 @@
 @extends('master')
+
 @section('content')
 <div class="inner-header">
-		<div class="container">
-			<div class="pull-left">
-				<h6 class="inner-title">Sản phẩm {{$loap_sp->name}}</h6>
-			</div>
-			<div class="pull-right">
-				<div class="beta-breadcrumb font-large">
-					<a href="{{route('trang-chu')}}">Trang chủ</a> / <span>Loại sản phẩm</span>
-				</div>
-			</div>
-			<div class="clearfix"></div>
+	<div class="container">
+		<div class="pull-left">
+			<h6 class="inner-title">Sản phẩm {{$loap_sp->name}}</h6>
 		</div>
+		<div class="pull-right">
+			<div class="beta-breadcrumb font-large">
+				<a href="{{route('trang-chu')}}">Trang chủ</a> / <span>Loại sản phẩm</span>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
 </div>
 <div class="container">
 	<div id="content" class="space-top-none">
@@ -36,22 +37,33 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 									<div class="single-item-header">
-										<a href="{{route('chitietsanpham',$sp->id)}}"><img src="source/image/product/{{$sp->image}}" alt="" height="250px"></a>
+										<a href="{{route('chitietsanpham',$sp->id)}}">
+											@if (strpos($sp->image, 'https://lorempixel.com', 0) == false)
+												<img src="{!! $sp->image !!}" alt="" height="250px">
+											@else
+												<img src="source/image/product/{{$sp->image}}" alt="" height="250px">
+											@endif
+										</a>
 									</div>
 									<div class="single-item-body">
 										<p class="single-item-title">{{$sp->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-										@if($sp->discount !=0)
-											<span class="flash-del">{{number_format($sp->unit_price)}} đồng</span>
-												<span class="flash-sale">{{number_format($sp->discount)}} đồng</span>
+										@if($sp->discount==0)
+											<span class="flash-sale">{{number_format($sp->unit_price)}} đồng</span>
 										@else
-										<span>{{number_format($sp->unit_price)}} đồng</span>
+											<span class="flash-del">{{number_format($sp->unit_price)}} đồng</span>
+											<span class="flash-sale">{{number_format($sp->unit_price - $sp->unit_price * $sp->discount/100)}} đồng</span>
 										@endif
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="{{route('themgiohang',$sp->id)}}"><i class="fa fa-shopping-cart"></i></a>
-										<a class="beta-btn primary" href="{{route('chitietsanpham',$sp->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
+										<a href="javascript:void(0)" class="add-to-cart pull-left"
+											data-id="{{ $sp->id }}">
+											<i class="fa fa-shopping-cart"></i>
+										</a>
+										<a class="beta-btn primary" href="{{route('chitietsanpham', $sp->id)}}">
+											Chi tiết <i class="fa fa-chevron-right"></i>
+										</a>
 										<div class="clearfix"></div>
 									</div>
 								</div>
@@ -76,17 +88,23 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 									<div class="single-item-header">
-										<a href="product.html"><img src="source/image/product/{{$sp_k->image}}" alt="" height="250px"></a>
+										<a href="#">
+											@if (strpos($sp_k->image, 'https://lorempixel.com', 0) == false)
+												<img src="{!! $sp_k->image !!}" alt="" height="250px">
+											@else
+												<img src="source/image/product/{{$sp->image}}" alt="" height="250px">
+											@endif
+										</a>
 									</div>
 									<div class="single-item-body">
 										<p class="single-item-title">{{$sp_k->name}}</p>
 										<p class="single-item-price" style="font-size: 18px">
-										@if($sp_k->discount !=0)
-											<span class="flash-del">{{number_format($sp_k->unit_price)}} đồng</span>
-												<span class="flash-sale">{{number_format($sp_k->discount)}} đồng</span>
-										@else
-										<span>{{number_format($sp_k->unit_price)}} đồng</span>
-										@endif
+											@if($sp_k->discount==0)
+												<span class="flash-sale">{{number_format($sp_k->unit_price)}} đồng</span>
+											@else
+												<span class="flash-del">{{number_format($sp_k->unit_price)}} đồng</span>
+												<span class="flash-sale">{{number_format($sp_k->unit_price - $sp_k->unit_price * $sp_k->discount/100)}} đồng</span>
+											@endif
 										</p>
 									</div>
 									<div class="single-item-caption">
@@ -100,13 +118,17 @@
 						</div>
 						<div class="row">{{$sp_khac->links()}}</div>
 						<div class="space40">&nbsp;</div>
-						
 					</div> <!-- .beta-products-list -->
 				</div>
 			</div> <!-- end section with sidebar and main content -->
-
-
 		</div> <!-- .main-content -->
 	</div> <!-- #content -->
 </div> <!-- .container -->
+
+<script src="{!! asset("source/assets/dest/js/jquery.js") !!}"></script>
+<script type="text/javascript" src="{!! asset('js/cart.js') !!}"></script>
+<script type="text/javascript">
+    var cart = new cart;
+    cart.init();
+</script>
 @endsection

@@ -1536,7 +1536,7 @@ float:left
 /* ==========================================================================
     6.3 BETA CART
 ============================================================================= */
-.cart {
+.cart-wraper {
 border:1px solid #e1e1e1;
 height:37px;
 line-height:37px;
@@ -1544,11 +1544,11 @@ padding:0 10px;
 cursor:pointer
 }
 
-.cart .beta-select {
+.cart-wraper .beta-select {
 position:static
 }
 
-.cart .beta-select i:first-child {
+.cart-wraper .beta-select i:first-child {
 margin-right:3px;
 color:#649c47;
 padding-left:0;
@@ -1556,7 +1556,7 @@ padding-right:0;
 font-size:16px
 }
 
-.cart .beta-select i:last-child {
+.cart-wraper .beta-select i:last-child {
 margin-left:3px;
 padding-left:0;
 padding-right:0

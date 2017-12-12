@@ -3,7 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="_token" content="{{ csrf_token() }}">
+
 	<title>Thực phẩm thực dưỡng</title>
+
 	<base href="{{asset('')}}">
 	<link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
@@ -17,15 +20,12 @@
 	<link rel="stylesheet" title="style" href="source/assets/dest/css/custom-style.css">
 </head>
 <body>
-
-		@include('header')
+	@include('header')
 	<div class="rev-slider">
 		@yield('content')
 	</div> <!-- .container -->
-		@include('footer')
+	@include('footer')
 	
-
-
 	<!-- include js files -->
 	<script src="source/assets/dest/js/jquery.js"></script>
 	<script src="source/assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>

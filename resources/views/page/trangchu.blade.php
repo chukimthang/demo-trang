@@ -64,7 +64,11 @@
 											</p>
 										</div>
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="{{route('themgiohang',$new->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											<a href="javascript:void(0)" 
+												class="add-to-cart pull-left"
+												data-id="{{ $new->id }}">
+												<i class="fa fa-shopping-cart"></i>
+											</a>
 											<a class="beta-btn primary" href="{{route('chitietsanpham',$new->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
@@ -106,7 +110,11 @@
 											</p>
 										</div>
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="{{route('themgiohang',$spkm->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											<a href="javascript:void(0)" 
+												class="add-to-cart pull-left"
+												data-id="{{ $new->id }}">
+												<i class="fa fa-shopping-cart"></i>
+											</a>
 											<a class="beta-btn primary" href="{{route('chitietsanpham',$spkm->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
@@ -122,4 +130,11 @@
 
 			</div> <!-- .main-content -->
 		</div> <!-- #content -->
+
+<script src="{!! asset("source/assets/dest/js/jquery.js") !!}"></script>
+<script type="text/javascript" src="{!! asset('js/cart.js') !!}"></script>
+<script type="text/javascript">
+    var cart = new cart;
+    cart.init();
+</script>
 @endsection
