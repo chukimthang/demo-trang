@@ -20,6 +20,7 @@ class CartController extends Controller
     {
         $id = $request->id;
         $number = $request->number;
+        
         $product = Product::find($id);
         if ($id) {
            $product = Product::find($id);

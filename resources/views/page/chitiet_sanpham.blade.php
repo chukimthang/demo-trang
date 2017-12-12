@@ -57,14 +57,17 @@
 							<div class="single-item-options">
 								<div class="quantity-spinner">
 									<span>Chọn số lượng: </span>
-                            		<div style="font-size: 18px; font-weight: bold;">
-	                                    <a href="javascript:void(0)" class="operator operator-minus">-</a>
-			                            <span class="number" style="margin-left: 10px; margin-right: 10px;">1</span>
-			                            <a href="javascript:void(0)" class="operator operator-add">+</a>
-			                        </div>
-                                </div>
+                					<div style="font-size: 18px; font-weight: bold;">
+			                        <a href="javascript:void(0)" class="operator operator-minus">-</a>
+			                      	<span class="number" style="margin-left: 10px; margin-right: 10px;">1</span>
+			                      	<a href="javascript:void(0)" class="operator operator-add">+</a>
+			                  		</div>
+			                	</div>
  
-								<a class="add-to-cart" href="{{ route('cart.addItem') }}"><i class="fa fa-shopping-cart"></i></a>
+								<a href="javascript:void(0)" class="add-to-cart pull-left"
+									data-id="{{ $sanpham->id }}">
+									<i class="fa fa-shopping-cart"></i>
+								</a>
 								<div class="clearfix"></div>
 							</div>
 						</div>
