@@ -36,32 +36,36 @@ Route::get('gioi-thieu',[
 	'uses'=>'PageController@getGioiThieu'
 ]);
 
-Route::get('add-to-cart/{id}',[
-	'as'=>'themgiohang',
-	'uses'=>'PageController@getAddtoCart'
-]);
-
-Route::get('del-cart/{id}',[
-	'as'=>'xoagiohang',
-	'uses'=>'PageController@getDelItemCart'
-]);
-Route::get('dat-hang',[
-	'as'=>'dathang',
-	'uses'=>'PageController@getCheckout'
-]);
-
-Route::post('dat-hang',[
-	'as'=>'dathang',
-	'uses'=>'PageController@postCheckout'
-]);
-
-
 Route::get('search',[
 	'as'=>'search',
 	'uses'=>'PageController@getSearch'
 ]);
 
 Route::resource('news', 'NewsController', ['only' => ['index', 'show']]);
+
+Route::group(['prefix' => 'cart', 'as' => 'cart.'], function() {
+    Route::get('/', ['as' => 'index', 'uses' => 'CartController@index']);
+
+   	Route::post('addItem', [
+        'as' => 'addItem',
+        'uses' => 'CartController@postAddItem'
+    ]);
+
+    Route::get('upQuantity', [
+    	'as' => 'upQuantity', 
+    	'uses' => 'CartController@getUpQuantity'
+    ]);
+
+    Route::get('downQuantity', [
+    	'as' => 'downQuantity',
+    	'uses' => 'CartController@getDownQuantity'
+    ]);
+
+    Route::post('deleteItem', [
+    	'as' => 'deleteItem', 
+    	'uses' => 'CartController@postDeleteItem'
+    ]);
+});
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 
 	'middleware' => ['auth', 'admin']], function(){
@@ -83,6 +87,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.',
 
 	Route::resource('users', 'UsersController');
 });
+
 
 Auth::routes();
 

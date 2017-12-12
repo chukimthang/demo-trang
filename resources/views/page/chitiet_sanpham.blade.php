@@ -48,23 +48,23 @@
 							</div>
 							<div class="space20">&nbsp;</div>
 
-							<p>Số lượng:</p>
+							<div class="avarible-product" style="margin-bottom: 20px;">
+                            	<span class="sum">
+                        			Còn {{ $sanpham->quantity }} sản phẩm
+                        		</span> 
+                    		</div>
+
 							<div class="single-item-options">
-								
-								<select class="wc-select" name="qty">
-									<!-- <option>0</option> -->
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-								</select>
-								<a class="add-to-cart" href="{{route('themgiohang',$sanpham->id)}}"><i class="fa fa-shopping-cart"></i></a>
+								<div class="quantity-spinner">
+									<span>Chọn số lượng: </span>
+                            		<div style="font-size: 18px; font-weight: bold;">
+	                                    <a href="javascript:void(0)" class="operator operator-minus">-</a>
+			                            <span class="number" style="margin-left: 10px; margin-right: 10px;">1</span>
+			                            <a href="javascript:void(0)" class="operator operator-add">+</a>
+			                        </div>
+                                </div>
+ 
+								<a class="add-to-cart" href="{{ route('cart.addItem') }}"><i class="fa fa-shopping-cart"></i></a>
 								<div class="clearfix"></div>
 							</div>
 						</div>
@@ -112,7 +112,7 @@
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="{{route('themgiohang',$sptt->id)}}"><i class="fa fa-shopping-cart"></i></a>
+										<a class="add-to-cart pull-left" href="{{route('cart.addItem')}}"><i class="fa fa-shopping-cart"></i></a>
 										<a class="beta-btn primary" href="{{route('chitietsanpham',$sptt->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>
@@ -155,4 +155,11 @@
 			</div>
 		</div> <!-- #content -->
 	</div> <!-- .container -->
+
+<script src="{!! asset("source/assets/dest/js/jquery.js") !!}"></script>
+<script type="text/javascript" src="{!! asset('js/cart.js') !!}"></script>
+<script type="text/javascript">
+    var cart = new cart;
+    cart.init();
+</script>
 @endsection

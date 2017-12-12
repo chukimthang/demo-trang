@@ -32,3 +32,6 @@
 ## Authentication
 - Run: php artisan make:auth
 - Link: https://laravel.com/docs/5.5/authentication
+
+## Shoppingcart
+- Link: https://github.com/Crinsane/LaravelShoppingcart
