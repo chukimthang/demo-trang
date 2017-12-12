@@ -67,6 +67,15 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.'], function() {
     ]);
 });
 
+Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function(){
+	Route::group(['prefix' => 'bills', 'as' => 'bills.'], function() {
+	    Route::post('addAjax', [
+	        'as' => 'addAjax',
+	        'uses' => 'BillsController@postAddAjax'
+	    ]);
+	});
+});
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 
 	'middleware' => ['auth', 'admin']], function(){
 	Route::resource('type_products', 'ProductTypesController', ['except' => 'show']);
