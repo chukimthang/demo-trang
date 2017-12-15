@@ -27,16 +27,7 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#">User<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="#">Danh sách user</a>
-                    </li>
-                    <li>
-                        <a href="#">Thêm user</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
+                <a href="{!! route('admin.users.index') !!}">Tài khoản</span></a>
             </li>
 
             <li>
@@ -51,6 +42,8 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+
+            <li><a href="{{ route('admin.bills.index') }}">Hóa đơn</a></li>
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

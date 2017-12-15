@@ -23,7 +23,6 @@
                         <th>Họ tên</th>
                         <th>Email</th>
                         <th>SĐT</th>
-                        <th>Địa chỉ</th>
                         <th>Ngày tạo</th>
                         <th>Thao tác</th>
                     </tr>
@@ -35,9 +34,15 @@
                         <td>{!! $user->full_name !!}</td>
                         <td>{!! $user->email !!}</td>
                         <td>{!! $user->phone !!}</td>
-                        <td>{!! $user->address !!}</td>
                         <td>{!! $user->created_at !!}</td>
-                        <td>Block</td>
+                        <td>
+                            @if ($user->is_admin == 0)
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['admin.users.destroy',
+                                    $user->id] ]) !!}
+                                {!! Form::submit("Xóa", ['class' => 'btn btn-danger btn-xs']) !!}
+                            {!! Form::close() !!}
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

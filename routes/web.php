@@ -52,33 +52,33 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.'], function() {
     ]);
 
     Route::get('upQuantity', [
-    	'as' => 'upQuantity', 
-    	'uses' => 'CartController@getUpQuantity'
+        'as' => 'upQuantity', 
+        'uses' => 'CartController@getUpQuantity'
     ]);
 
     Route::get('downQuantity', [
-    	'as' => 'downQuantity',
-    	'uses' => 'CartController@getDownQuantity'
+        'as' => 'downQuantity',
+        'uses' => 'CartController@getDownQuantity'
     ]);
 
     Route::post('deleteItem', [
-    	'as' => 'deleteItem', 
-    	'uses' => 'CartController@postDeleteItem'
+        'as' => 'deleteItem', 
+        'uses' => 'CartController@postDeleteItem'
     ]);
 });
 
 Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function(){
-	Route::group(['prefix' => 'bills', 'as' => 'bills.'], function() {
-	    Route::post('addAjax', [
-	        'as' => 'addAjax',
-	        'uses' => 'BillsController@postAddAjax'
-	    ]);
-	});
+    Route::group(['prefix' => 'bills', 'as' => 'bills.'], function() {
+        Route::post('addAjax', [
+            'as' => 'addAjax',
+            'uses' => 'BillsController@postAddAjax'
+        ]);
+    });
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 
-	'middleware' => ['auth', 'admin']], function(){
-	Route::resource('type_products', 'ProductTypesController', ['except' => 'show']);
+    'middleware' => ['auth', 'admin']], function(){
+    Route::resource('type_products', 'ProductTypesController', ['except' => 'show']);
 	// type_product
 	// Route::group(['prefix' => 'type_product'], function(){
 	// 	Route::get('list','ProductTypeController@getList');
@@ -92,11 +92,24 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.',
 
 	// 	Route::get('delete/{id}','ProductTypeController@getDelete');
 	// });
-	Route::resource('news', 'NewsController');
+    Route::resource('news', 'NewsController');
 
-	Route::resource('users', 'UsersController');
+    Route::resource('users', 'UsersController', ['only' => ['index', 'destroy']]);
+
+    Route::resource('bills', 'BillsController', ['only' => ['index', 'show', 'destroy']]);
+
+    Route::group(['prefix' => 'bills', 'as' => 'bills.'], function() {
+        Route::get('edit', [
+            'as' => 'edit',
+            'uses' => 'BillsController@edit'
+        ]);
+
+        Route::post('update', [
+            'as' => 'update',
+            'uses' => 'BillsController@update'
+        ]);
+    });
 });
-
 
 Auth::routes();
 
