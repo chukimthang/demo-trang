@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,7 +20,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456'),
             'phone' => '123456789',
             'address' => 'Vinh Phuc',
-            'is_admin' => 1
+            'is_admin' => 1,
+            'created_at' => Carbon::now()
         ]);
 
         DB::table('users')->insert([
@@ -28,7 +30,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456'),
             'phone' => '123456789',
             'address' => 'Vinh Phuc',
-            'is_admin' => 1
+            'is_admin' => 1,
+            'created_at' => Carbon::now()
         ]);
 
         DB::table('users')->insert([
@@ -37,7 +40,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456'),
             'phone' => '123456789',
             'address' => 'Vinh Phuc',
-            'is_admin' => 0
+            'is_admin' => 0,
+            'created_at' => Carbon::now()
         ]);
 
         foreach (range(1,30) as $index) {
@@ -47,7 +51,8 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('123456'),
                 'phone' => $faker->phoneNumber,
                 'address' => $faker->address,
-                'is_admin' => 0
+                'is_admin' => 0,
+                'created_at' => Carbon::now()
             ]);
         }
     }
