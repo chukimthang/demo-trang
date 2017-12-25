@@ -8,5 +8,5 @@ class News extends Model
 {
     protected $table = "news";
 
-    protected $fillable = ['id_comments', 'title', 'content', 'image', 'receiver_id'];
+    protected $fillable = ['id_comments', 'title', 'content', 'image', 'description'];
 }

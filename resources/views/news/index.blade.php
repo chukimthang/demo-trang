@@ -24,10 +24,10 @@
                                     <div class="single-item">
                                         <div class="single-item-header">
                                             <a href="{{route('chitietsanpham', $item->id)}}">
-                                                @if (strpos($item->image, 'https://lorempixel.com', 0) == false)
+                                                @if (strpos($item->image, 'lorempixel.com'))
                                                     <img src="{!! $item->image !!}" alt="" height="250px">
                                                 @else
-                                                    <img src="upload/images/{!! $item->image !!}" alt="" height="250px">
+                                                    <img src="upload/images/news/{!! $item->image !!}" alt="" height="250px">
                                                 @endif
                                             </a>
                                         </div>

@@ -26,6 +26,7 @@ class NewsAddRequest extends FormRequest
         return [
             'title' => 'required|unique:news,title',
             'image' => 'required',
+            'description' => 'required',
             'content' => 'required'
         ];
     }
@@ -35,6 +36,7 @@ class NewsAddRequest extends FormRequest
         return [
             'title.required' => 'Tiêu đề trống',
             'image.required' => 'Ảnh trống',
+            'description.required' => 'Mô tả trống',
             'content.required' => 'Nội dung trống',
             'title.unique' => 'Trùng tên tiêu đề'
         ];
