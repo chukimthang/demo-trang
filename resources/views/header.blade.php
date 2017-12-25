@@ -10,7 +10,13 @@
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
 					@if(Auth::check())
-						<li><a href="">Chào bạn {{Auth::user()->full_name}}</a></li>
+						<li>
+							@if (Auth::user()->is_admin == 1)
+								<a href="{!! route('admin.users.index') !!}">Chào bạn {{Auth::user()->full_name}}</a>
+							@else
+								<a href="#">Chào bạn {{Auth::user()->full_name}}</a>
+							@endif
+						</li>
 						 <li>
                             <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
