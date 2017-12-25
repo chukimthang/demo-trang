@@ -39,7 +39,6 @@ class BillsController extends Controller
             case 3:
                 unset($status[1]);
                 unset($status[2]);
-                unset($status[4]);
                 break;
             case 4:
                 unset($status[1]);

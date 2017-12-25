@@ -32,10 +32,12 @@
                         <td>{!! $key + 1 !!}</td>
                         <td align="left">{!! $item->title !!}</td>
                         <td>
-                            @if (strpos($item->image, 'https://lorempixel.com', 0) == false)
-                                <img src="{!! $item->image !!}" alt="" height="50px">
+                            @if (strpos($item->image, 'lorempixel.com'))
+                                <img src="{!! $item->image !!}" alt="" height="50px"
+                                    style="width: 60px !important">
                             @else
-                                <img src="upload/images/{!! $item->image !!}" alt="" height="50px">
+                                <img src="upload/images/news/{!! $item->image !!}" 
+                                    alt="" height="50px" style="width: 60px !important">
                             @endif
                         </td>
                         <td align="left">

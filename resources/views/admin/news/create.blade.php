@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">News <small>Add</small></h1>
+                <h1 class="page-header">Thêm bài viết</h1>
             </div>
 
             <div class="col-lg-7">
@@ -23,13 +23,19 @@
                     </div>
 
                     <div class="form-group">
+                        {!! Form::label("description", "Mô tả") !!}
+                        {!! Form::textarea("description", null, ["class" => "form-control", 
+                            'size' => '30x5']) !!}
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::label("content", "Nội dung") !!}
                         {!! Form::textarea("content") !!}
                     </div>
                     
                     <div class="form-group">
-                        {!! Form::submit("Create", ["class" => "btn btn-primary"]) !!}
-                        <a href="{!! route("admin.news.index") !!}" class="btn btn-default">Back</a>
+                        {!! Form::submit("Thêm", ["class" => "btn btn-primary"]) !!}
+                        <a href="{!! route("admin.news.index") !!}" class="btn btn-default">Thoát</a>
                     </div>
                 {!! Form::close() !!}
             </div>

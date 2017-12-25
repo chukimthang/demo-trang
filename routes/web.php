@@ -99,7 +99,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.',
     Route::resource('bills', 'BillsController', ['only' => ['index', 'show', 'destroy']]);
 
     Route::group(['prefix' => 'bills', 'as' => 'bills.'], function() {
-        Route::get('edit', [
+        Route::post('edit', [
             'as' => 'edit',
             'uses' => 'BillsController@edit'
         ]);

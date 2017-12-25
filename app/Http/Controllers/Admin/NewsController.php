@@ -16,7 +16,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::orderBy('created_at', 'DESC')->get();
 
         return view('admin.news.index', compact('news'));
     }
@@ -39,11 +39,11 @@ class NewsController extends Controller
      */
     public function store(NewsAddRequest $request)
     {
-        $data = $request->only('title', 'content');
+        $data = $request->only('title', 'description', 'content');
 
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('upload/images');
+        $destinationPath = public_path('upload/images/news');
         $image->move($destinationPath, $name);
         $data['image'] = $name;
         
@@ -94,21 +94,23 @@ class NewsController extends Controller
         $this->validate($request, 
             [
                 'title' => 'required|unique:news,title,' . $news->id,
+                'description' => 'required',
                 'content' => 'required'
             ],
             [
                 'title.required' => 'Tiêu đề trống',
                 'title.unique' => 'Tiêu đề trùng',
+                'description.required' => 'Mô tả trống',
                 'content.required' => 'Nội dung trống'
             ]
         );
         
-        $data = $request->only('title', 'content');
+        $data = $request->only('title', 'description', 'content');
 
         if ($request->file('image')) {
             $image = $request->file('image');
             $name = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('upload/images');
+            $destinationPath = public_path('upload/images/news');
             $image->move($destinationPath, $name);
             $data['image'] = $name;
         } else {
@@ -141,7 +143,7 @@ class NewsController extends Controller
         }
 
         $name_image = $news->image;
-        $destinationPath = public_path("upload/images/$name_image");
+        $destinationPath = public_path("upload/images/news/$name_image");
 
         if(file_exists($destinationPath)){
             @unlink($destinationPath);

@@ -1,5 +1,5 @@
 <div class="status">
-    <select class="form-control" id="bill-select">
+    <select class="form-control" id="bill-select" style="margin-bottom: 10px;">
         @foreach ($status as $key => $value)
             @if ($key == $bill->status)
                 <option value="{!! $key !!}" selected="selected"
@@ -16,7 +16,6 @@
             @endif
         @endforeach
     </select>
-    
     <button type="button" class="btn btn-primary" 
         data-id="{!! $bill->id !!}">
         Cập nhật</button>

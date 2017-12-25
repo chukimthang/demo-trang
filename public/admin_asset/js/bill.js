@@ -17,7 +17,7 @@ function bill() {
 
       $.ajax({
         url: '/admin/bills/edit',
-        type: 'GET',
+        type: 'POST',
         data: {
           id: billId
         }

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Thực phẩm thực dưỡng">
     <meta name="author" content="">
+    <meta name="_token" content="{{ csrf_token() }}">
+    
     <title>Thực phẩm thực dưỡng</title>
 
     <base href="{{asset('')}}">
@@ -28,6 +30,7 @@
     <script src="admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="admin_asset/bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script src="admin_asset/dist/js/sb-admin-2.js"></script>
+    <script src="{{ asset('js/lang.js') }}"></script>
     @yield('script')
 </body>
 </html>

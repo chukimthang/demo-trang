@@ -34,13 +34,15 @@
                         <td>{!! $bill->id !!}</td>
                         <td>{!! $bill->user->full_name !!}</td>
                         <td>{!! number_format($bill->total) !!}</td>
-                        <td id="bill-status-{!! $bill->id !!}">
-                            <p align="center">
-                                {!! config('common.status_bill')[$bill->status] !!}
-                            </p>
-                            <a href="javascript:void(0)" align="center" 
-                                class="update-status"
-                                data-id="{!! $bill->id !!}">Edit</a>
+                        <td>
+                            <div id="bill-status-{!! $bill->id !!}">
+                                <p align="center">
+                                    {!! config('common.status_bill')[$bill->status] !!}
+                                </p>
+                                <a href="javascript:void(0)" align="center" 
+                                    class="update-status"
+                                    data-id="{!! $bill->id !!}">Cập nhật</a>
+                            </div>
                         </td>
 
                         <td align="left">
