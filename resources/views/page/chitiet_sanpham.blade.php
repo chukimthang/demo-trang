@@ -21,10 +21,11 @@
 
 					<div class="row">
 						<div class="col-sm-4">
-							@if (strpos($sanpham->image, 'https://lorempixel.com', 0) == false)
+							@if (strpos($sanpham->image, 'lorempixel.com'))
 								<img src="{!! $sanpham->image !!}" alt="" height="250px">
 							@else
-								<img src="source/image/product/{{$sanpham->image}}" alt="" height="250px">
+								<img src="upload/images/product/{{$sanpham->image}}" 
+									alt="" height="250px">
 							@endif
 						</div>
 						<div class="col-sm-8">
@@ -96,10 +97,10 @@
 									@endif
 									<div class="single-item-header">
 										<a class="pull-left" href="{{route('chitietsanpham',$sptt->id)}}">
-										@if (strpos($sptt->image, 'https://lorempixel.com', 0) == false)
+										@if (strpos($sptt->image, 'lorempixel.com'))
 											<img src="{!! $sptt->image !!}" alt="" height="250px">
 										@else
-											<img src="source/image/product/{{$sptt->image}}" alt="" height="250px">
+											<img src="upload/images/product/{{$sptt->image}}" alt="" height="250px">
 										@endif
 										</a>
 									</div>
@@ -134,10 +135,10 @@
 								@foreach($new_product as $new_product_item) 
 								<div class="media beta-sales-item">
 									<a class="pull-left" href="{{route('chitietsanpham',$new_product_item->id)}}">
-										@if (strpos($new_product_item->image, 'https://lorempixel.com', 0) == false)
+										@if (strpos($new_product_item->image, 'lorempixel.com'))
 											<img src="{!! $new_product_item->image !!}" alt="" height="250px">
 										@else
-											<img src="source/image/product/{{$new_product_item->image}}" alt="" height="250px">
+											<img src="upload/images/product/{{$new_product_item->image}}" alt="" height="250px">
 										@endif
 									</a>
 									<div class="media-body">

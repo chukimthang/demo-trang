@@ -3,14 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
-class ProductType extends Model
+class TypeProduct extends Model
 {
     protected $table = "type_products";
 
     protected $fillable = ['name', 'description'];
 
-    public function product(){
-    	return $this->hasMany('App\Product','id_type','id');
+    public function products()
+    {
+    	return $this->hasMany(Product::class);
     }
 }

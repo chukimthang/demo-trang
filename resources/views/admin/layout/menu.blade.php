@@ -18,10 +18,10 @@
                 <a href="#"></i> Sản phẩm<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/product/list">Danh sách sản phẩm</a>
+                        <a href="{!! route('admin.products.index') !!}">Danh sách sản phẩm</a>
                     </li>
                     <li>
-                        <a href="admin/product/add">Thêm sản phẩm</a>
+                        <a href="{!! route('admin.products.create') !!}">Thêm sản phẩm</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

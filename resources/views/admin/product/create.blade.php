@@ -5,14 +5,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Sửa sản phẩm</h1>
+                <h1 class="page-header">Thêm sản phẩm</h1>
             </div>
 
             <div class="col-lg-7">
                 @include("shared.error_message")
 
-                 {!! Form::model($product, ['method' => 'PUT', "files" => true, 
-                    'route' => ['admin.products.update', $product->id]]) !!}
+                {!! Form::open(["route" => "admin.products.store", "files" => true]) !!}
                     <div class="form-group">
                         {!! Form::label("name", "Tên") !!}
                         {!! Form::text("name", null, ["class" => "form-control", "placeholder" =>  "Tên sản phẩm"]) !!}
@@ -61,7 +60,7 @@
                     </div>
                     
                     <div class="form-group">
-                        {!! Form::submit("Sửa", ["class" => "btn btn-primary"]) !!}
+                        {!! Form::submit("Thêm", ["class" => "btn btn-primary"]) !!}
                         <a href="{!! route("admin.products.index") !!}" class="btn btn-default">Thoát</a>
                     </div>
                 {!! Form::close() !!}
