@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\ProductType;
+use App\TypeProduct;
 use Session;
 use Illuminate\Support\Facades\Schema;
 
@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         
         view()->composer('header',function($view){
-            $loai_sp = ProductType::all();
+            $loai_sp = TypeProduct::all();
             
             $view->with('loai_sp',$loai_sp);
         });

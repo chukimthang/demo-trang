@@ -79,19 +79,9 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], fu
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 
     'middleware' => ['auth', 'admin']], function(){
     Route::resource('type_products', 'ProductTypesController', ['except' => 'show']);
-	// type_product
-	// Route::group(['prefix' => 'type_product'], function(){
-	// 	Route::get('list','ProductTypeController@getList');
+	
+    Route::resource('products', 'ProductsController');
 
-	// 	Route::get('add','ProductTypeController@getAdd');
-	// 	// Ham nhan du lieu ve va luu vao CSDL
-	// 	Route::post('add','ProductTypeController@postAdd');
-
-	// 	Route::get('edit/{id}','ProductTypeController@getEdit');
-	// 	Route::post('edit/{id}','ProductTypeController@postEdit');
-
-	// 	Route::get('delete/{id}','ProductTypeController@getDelete');
-	// });
     Route::resource('news', 'NewsController');
 
     Route::resource('users', 'UsersController', ['only' => ['index', 'destroy']]);

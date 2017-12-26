@@ -38,10 +38,10 @@
 									@endif
 									<div class="single-item-header">
 										<a href="{{route('chitietsanpham',$sp->id)}}">
-											@if (strpos($sp->image, 'https://lorempixel.com', 0) == false)
+											@if (strpos($sp->image, 'lorempixel.com'))
 												<img src="{!! $sp->image !!}" alt="" height="250px">
 											@else
-												<img src="source/image/product/{{$sp->image}}" alt="" height="250px">
+												<img src="upload/images/product/{{$sp->image}}" alt="" height="250px">
 											@endif
 										</a>
 									</div>
@@ -89,10 +89,10 @@
 									@endif
 									<div class="single-item-header">
 										<a href="#">
-											@if (strpos($sp_k->image, 'https://lorempixel.com', 0) == false)
+											@if (strpos($sp_k->image, 'lorempixel.com'))
 												<img src="{!! $sp_k->image !!}" alt="" height="250px">
 											@else
-												<img src="source/image/product/{{$sp->image}}" alt="" height="250px">
+												<img src="upload/images/product/{{$sp->image}}" alt="" height="250px">
 											@endif
 										</a>
 									</div>

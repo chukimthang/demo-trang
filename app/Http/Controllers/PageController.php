@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Slide;
 use App\Product;
-use App\ProductType;
+use App\TypeProduct;
 use App\User;
 use Hash;
 use Auth;
@@ -26,8 +26,8 @@ class PageController extends Controller
     public function getLoaiSp($type){
         $sp_theoloai = Product::where('type_product_id',$type)->get();
         $sp_khac = Product::where('type_product_id','<>',$type)->paginate(3);
-        $loai = ProductType::all();
-        $loap_sp = ProductType::where('id',$type)->first();
+        $loai = TypeProduct::all();
+        $loap_sp = TypeProduct::where('id',$type)->first();
     	return view('page.loai_sanpham',compact('sp_theoloai','sp_khac','loai','loap_sp'));
     }
 
