@@ -28,6 +28,7 @@
                         <th class="col-sm-1">Đơn vị</th>
                         <th class="col-sm-1">SL</th>
                         <th class="col-sm-1">Loại</th>
+                        <th class="col-sm-1">Trạng thái</th>
                         <th class="col-sm-1">Thao tác</th>
                     </tr>
                 </thead>
@@ -50,6 +51,7 @@
                         <td>{!! config('common.product_unit')[$product->unit] !!}</td>
                         <td>{!! $product->quantity !!}</td>
                         <td>{!! $product->type_product->name !!}</td>
+                        <td>{!! config('common.product_status')[$product->status] !!}</td>
                         <td>
                             <div style="float: left;">
                                 <a href="{!! route('admin.products.edit', $product->id) !!}" 

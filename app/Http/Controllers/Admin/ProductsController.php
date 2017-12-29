@@ -32,8 +32,9 @@ class ProductsController extends Controller
     {
         $type_products = TypeProduct::all()->pluck('name', 'id');
         $units = config('common.product_unit');
+        $status = config('common.product_status');
 
-        return view('admin.product.create', compact('type_products', 'units'));
+        return view('admin.product.create', compact('type_products', 'units', 'status'));
     }
 
     /**
@@ -45,8 +46,7 @@ class ProductsController extends Controller
     public function store(ProductsAddRequest $request)
     {
         $data = $request->only('name', 'unit_price', 'discount', 'quantity', 
-            'type_product_id', 'unit', 'description');
-        $data['status'] = 0;
+            'type_product_id', 'unit', 'description', 'status');
 
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
@@ -78,10 +78,11 @@ class ProductsController extends Controller
             ]);
         }
 
+        $status = config('common.product_status');
         $type_products = TypeProduct::all()->pluck('name', 'id');
         $units = config('common.product_unit');
 
-        return view('admin.product.edit', compact('product', 'type_products', 'units'));
+        return view('admin.product.edit', compact('product', 'type_products', 'units', 'status'));
     }
 
     /**
@@ -112,8 +113,7 @@ class ProductsController extends Controller
         );
         
         $data = $request->only('name', 'unit_price', 'discount', 'quantity', 
-            'type_product_id', 'unit', 'description');
-        $data['status'] = 0;
+            'type_product_id', 'unit', 'description', 'status');
 
         if ($request->file('image')) {
             $name_image = $product->image;

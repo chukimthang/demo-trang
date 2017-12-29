@@ -17,10 +17,10 @@
                     <td>
                         <div class="column-box">
                             <a href="#">
-                                @if (strpos($item->options->image, 'https://lorempixel.com', 0) == false)
+                                @if (strpos($item->options->image, 'lorempixel.com'))
                                     <img src="{!! $item->options->image !!}" alt="" height="50px">
                                 @else
-                                    <img src="source/image/product/{{ $item->options->image}}" alt="" height="50px">
+                                    <img src="upload/images/product/{{ $item->options->image}}" alt="" height="50px">
                                 @endif
                             </a>
                         </div>
@@ -51,6 +51,6 @@
 
 <div class="row clearfix">
     <p style="font-size: 20px; font-weight: bold;" align="right">
-        <span>Tổng tiền: {!! Cart::total() !!}</span>
+        <span>Tổng tiền: {!! Cart::subtotal() !!}</span>
     </p>
 </div>

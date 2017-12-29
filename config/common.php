@@ -8,9 +8,9 @@ return [
         5 => 'Hủy đơn hàng'
     ],
 
-    'status_product' => [
-        0 => 'Còn hàng',
-        1 => 'Hết hàng'
+    'product_status' => [
+        0 => 'Mới',
+        1 => 'Cũ'
     ],
 
     'product_unit' => [

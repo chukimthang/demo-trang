@@ -55,6 +55,13 @@
                     </div>
 
                     <div class="form-group">
+                        {!! Form::label("status", "Trạng thái") !!}
+                        {!! Form::select('status', $status, null, [
+                            'class' => 'form-control'
+                        ]) !!}
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::label("description", "Mô tả") !!}
                         {!! Form::textarea("description", null, ["class" => "form-control", 
                             'size' => '30x5']) !!}
