@@ -17,10 +17,10 @@
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="col-sm-4">
-                            @if (strpos($news->image, 'https://lorempixel.com', 0) == false)
+                            @if (strpos($news->image, 'lorempixel.com', 0))
                                 <img src="{!! $news->image !!}" alt="" height="250px">
                             @else
-                                <img src="upload/images/{!! $news->image !!}" alt="" height="250px">
+                                <img src="upload/images/news/{!! $news->image !!}" alt="" height="250px">
                             @endif
                         </div>
                         <div class="col-sm-8">
