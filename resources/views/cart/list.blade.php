@@ -49,7 +49,7 @@
     </tbody>
 </table>
 
-<div class="row clearfix">
+<div class="row clearfix" data-cart-quantity="{!! Cart::count() !!}" id="cart-total">
     <p style="font-size: 20px; font-weight: bold;" align="right">
         <span>Tổng tiền: {!! Cart::subtotal() !!}</span>
     </p>

@@ -59,12 +59,12 @@
                             <td align="center"><a href="#">
                                 {!! $billDetail->product->name !!}</a></td>
                             <td align="center">
-                                {!! number_format($billDetail->product->unit_price) !!}
+                                <?php $price = $billDetail->product->unit_price * (1 - $billDetail->product->discount / 100) ?>
+                                {!! number_format($price) !!}
                             </td>
                             <td align="center">
                                 {!! $billDetail->quantity !!}</td>
-                            <td align="center">{!! number_format($billDetail->product
-                                ->unit_price * $billDetail->quantity) !!}
+                            <td align="center">{!! number_format($price * $billDetail->quantity) !!}
                             </td>
                         </tr>
                     @endforeach
