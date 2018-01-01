@@ -23,8 +23,8 @@
                         </div>
 
                         <div align="center">
-                            <a href="javascript:void(0)" data-toggle="modal" id="confirm-auth" 
-                                data-auth="{!! Auth::id() !!}">
+                            <a href="javascript:void(0)" data-toggle="modal" id="confirm-auth"
+                                data-auth="{!! Auth::id() !!}" >
                                 <button class="btn btn-primary">Xác nhận</button>
                             </a>
                         </div>
@@ -44,7 +44,14 @@
     $('#confirm-auth').on('click', function(event) {
         var auth = $(this).data('auth');
         if (auth) {
-            $('#confirm-auth').attr('data-target','#order-create');
+            var check_cart_quantity = $("#cart-total").data('cart-quantity');
+
+            if(check_cart_quantity == 0) {
+                alert('Bạn cần chọn hàng trước khi đặt hàng');
+                $('#confirm-auth').attr('data-target','');
+            } else {
+                $('#confirm-auth').attr('data-target','#order-create');
+            }
         } else {
             alert('Bạn cần đăng nhập để thực hiện đặt hàng');
         }
