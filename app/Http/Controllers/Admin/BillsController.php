@@ -67,4 +67,17 @@ class BillsController extends Controller
 
         return response()->json(['status' => 200]);
     }
+
+    public function destroy($id)
+    {   
+        if ($id) {
+            $bill = Bill::find($id);
+            $bill->delete();
+
+            return redirect()->route('admin.bills.index')->with([
+                'flash_level' => 'success',
+                'flash_message' => 'Xóa bài viết thành công'
+            ]);
+        }
+    }
 }
