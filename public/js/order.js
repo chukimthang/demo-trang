@@ -27,8 +27,7 @@ function order() {
       .done(function(data) {
         $('.form-error').html('');
         alert('Tạo đơn hàng thành công');
-        $('.modal').modal('hide');
-        $('#cart').html(data);
+        window.location = "/cart"
       })
       .fail(function(data) {
         var errors = '';
