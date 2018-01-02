@@ -51,7 +51,7 @@ class BillsController extends Controller
 
                 $product = Product::find($item->id);
                 $dataProduct = [
-                    'quantity' => $product->quantity - $item->quantity
+                    'quantity' => $product->quantity - $item->qty
                 ];
                 $product->update($dataProduct);
             }
