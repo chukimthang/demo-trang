@@ -11,7 +11,7 @@ class BillsController extends Controller
 {
     public function index()
     {
-        $bills = Bill::all();
+        $bills = Bill::orderBy('id', 'DESC')->get();
 
         return view('admin.bill.index', compact('bills'));
     }
