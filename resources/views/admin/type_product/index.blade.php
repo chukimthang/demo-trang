@@ -38,10 +38,7 @@
                                     class="btn btn-success btn-xs">Sửa</a> 
                             </div>
                             <div>
-                                {!! Form::open(['method' => 'DELETE', 'route' => ['admin.type_products.destroy',
-                                    $product_item->id] ]) !!}
-                                {!! Form::submit("Xóa", ['class' => 'btn btn-danger btn-xs']) !!}
-                            {!! Form::close() !!}
+                                <a href="#" data-toggle="modal" data-target="#modal-deletion" class="delete-type btn btn-danger btn-xs" data-id="{!! $product_item->id !!}">Xóa</a> 
                             </div>
                         </td>
                     </tr>
@@ -52,10 +49,17 @@
     </div>
 </div>
 
+@include ("shared/deletion")
+
 <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/datatable.js') }}"></script>
 <script>
     var db = new datatable;
     db.init('#dataTables-example');
+
+    $(document).on("click", ".delete-type", function () {
+      var id = $(this).data('id');
+      document.getElementById("btn-confirm-delete").href = "admin/type_products/" + id;
+    });
 </script>
 @endsection

@@ -78,7 +78,12 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], fu
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 
     'middleware' => ['auth', 'admin']], function(){
-    Route::resource('type_products', 'ProductTypesController', ['except' => 'show']);
+    Route::resource('type_products', 'ProductTypesController', ['except' => 'show', 'destroy']);
+
+    Route::get('type_products/{id}', [
+        'as' => 'type_products.destroy',
+        'uses' => 'ProductTypesController@destroy'
+    ]);
 	
     Route::resource('products', 'ProductsController');
 
