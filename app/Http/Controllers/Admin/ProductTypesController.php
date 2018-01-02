@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests\TypeProductsAddRequest;
 use App\Http\Controllers\Controller;
-use App\ProductType;
+use App\TypeProduct;
+use App\Product;
 
 class ProductTypesController extends Controller
 {
     public function index() 
     {
-    	$type_products = ProductType::all();
+    	$type_products = TypeProduct::all();
 
     	return view('admin.type_product.index', compact('type_products'));
     }
@@ -23,7 +24,7 @@ class ProductTypesController extends Controller
 
     public function store(TypeProductsAddRequest $request){
         $data = $request->only('name', 'description');
-        ProductType::create($data);
+        TypeProduct::create($data);
 
         return redirect()->route('admin.type_products.index')->with([
             'flash_level' => 'success',
@@ -32,7 +33,7 @@ class ProductTypesController extends Controller
     }
 
     public function edit($id){
-    	$type_product = ProductType::find($id);
+    	$type_product = TypeProduct::find($id);
 
         if (!$type_product) {
             return redirect()->route('admin.type_producs.index')->with([
@@ -45,7 +46,7 @@ class ProductTypesController extends Controller
     }
 
     public function update(Request $request, $id){
-    	$type_product = ProductType::find($id);
+    	$type_product = TypeProduct::find($id);
 
         if (!$type_product) {
             return redirect()->route('admin.type_products.index')->with([
@@ -75,7 +76,7 @@ class ProductTypesController extends Controller
     }
 
     public function destroy($id){
-    	$type_product = ProductType::find($id);
+        $type_product = TypeProduct::find($id);
 
         if (!$type_product) {
             return redirect()->route('admin.type_products.index')->with([
